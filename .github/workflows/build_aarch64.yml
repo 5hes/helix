@@ -42,10 +42,13 @@ jobs:
           # gcc-aarch64-linux-gnu \
           # g++-aarch64-linux-gnu \
           # binutils-aarch64-linux-gnu \
+        wget https://musl.cc/aarch64-linux-musl-cross.tgz
+        tar -xzf aarch64-linux-musl-cross.tgz -C /usr/local
+        export PATH=/usr/local/aarch64-linux-musl-cross/bin:$PATH
 
-        export CC_aarch64_unknown_linux_musl=musl-gcc
-        export AR_aarch64_unknown_linux_musl=musl-ar
-        export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER=musl-gcc
+        export CC_aarch64_unknown_linux_musl=aarch64-linux-musl-gcc
+        export AR_aarch64_unknown_linux_musl=aarch64-linux-musl-ar
+        export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER=aarch64-linux-musl-gcc
 
         cargo build --help
         
@@ -73,6 +76,7 @@ jobs:
     - name: Check
       run: |
         ls -lh
+        file target/aarch64-unknown-linux-musl/opt/hx
         printf "
 
 
