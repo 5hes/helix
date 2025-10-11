@@ -1,0 +1,45 @@
+name: Build for aarch64
+
+on:
+  workflow_dispatch:
+  push:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Push a tag
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        export NAME="yearly"
+        git tag $NAME
+        git push origin $NAME || echo "Tag exists already"
+        
+    - name: Setup rust
+      run: |
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rustup-init.sh
+        chmod +x rustup-init.sh
+        ./rustup-init.sh -y
+
+    - name: Build bin
+      run: |
+        RUSTFLAGS="-C target-feature=-crt-static" cargo install \
+        --profile opt \
+        --path helix-term \
+        --locked
+
+    - name: Check
+      run: |
+        ls -lh
+        printf "/n/n/n/n/n"
+        tree .cargo
+        
+        
