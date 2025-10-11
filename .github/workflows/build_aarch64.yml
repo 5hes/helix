@@ -88,6 +88,6 @@ jobs:
         tag_name: "yearly"
         draft: false
         files: |
-          target/aarch64-unknown-linux-musl/hx
+          target/aarch64-unknown-linux-musl/opt/hx
       env: 
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
