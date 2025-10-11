@@ -63,7 +63,7 @@ jobs:
 
 
         "
-        RUSTFLAGS="-C target-feature=-crt-static" cargo build \
+        RUSTFLAGS="-C target-feature=-crt-static -C link-arg=-lm" cargo build \
         --target aarch64-unknown-linux-musl \
         --profile opt \
         --locked \
