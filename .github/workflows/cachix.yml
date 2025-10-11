@@ -3,7 +3,7 @@ name: Cachix
 on:
   push:
     branches:
-      - master
+      - masterr
 
 jobs:
   publish:
