@@ -37,7 +37,9 @@ jobs:
         sudo apt-get install -y \
           musl-tools \
           gcc-aarch64-linux-gnu \
-          binutils-aarch64-linux-gnu
+          g++-aarch64-linux-gnu \
+          binutils-aarch64-linux-gnu \
+          musl-dev
 
         export CC_aarch64_unknown_linux_musl=aarch64-linux-gnu-gcc
         export AR_aarch64_unknown_linux_musl=aarch64-linux-gnu-ar
