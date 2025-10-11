@@ -34,6 +34,8 @@ jobs:
         . $HOME/.cargo/env
         rustup target add aarch64-unknown-linux-musl
 
+        sudo apt-get update
+        apt-cache search gcc
         sudo apt-get install -y \
           musl-tools \
           gcc-15-aarch64-linux-gnu \
