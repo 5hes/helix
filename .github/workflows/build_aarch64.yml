@@ -38,10 +38,10 @@ jobs:
         # DANGEROUS apt-cache search gcc
         sudo apt-get install -y \
           musl-tools \
+          musl-dev
           # gcc-aarch64-linux-gnu \
           # g++-aarch64-linux-gnu \
           # binutils-aarch64-linux-gnu \
-          musl-dev
 
         export CC_aarch64_unknown_linux_musl=musl-gcc
         export AR_aarch64_unknown_linux_musl=musl-ar
