@@ -42,7 +42,7 @@ jobs:
           # gcc-aarch64-linux-gnu \
           # g++-aarch64-linux-gnu \
           # binutils-aarch64-linux-gnu \
-        wget https://musl.cc/aarch64-linux-musl-cross.tgz
+        wget "http://musl.cc/aarch64-linux-musl-cross.tgz"
         tar -xzf aarch64-linux-musl-cross.tgz -C /usr/local
         export PATH=/usr/local/aarch64-linux-musl-cross/bin:$PATH
 
