@@ -73,7 +73,21 @@ jobs:
     - name: Check
       run: |
         ls -lh
-        printf "/n/n/n/n/n"
+        printf "
+
+
+
+
+        "
         tree target
         
         
+    - name: Create Release
+      uses: softprops/action-gh-release@v2
+      with:
+      tag_name: "yearly"
+      draft: false
+      files: |
+        target/aarch64-unknown-linux-musl/hx
+      env: 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
