@@ -32,12 +32,15 @@ jobs:
     - name: Build bin
       run: |
         . $HOME/.cargo/env
-        rustup target add aarch64-unknown-linux-musl      
+        rustup target add aarch64-unknown-linux-musl
+        cargo build --help
+        printf "/n/n/n/n/n/"
         RUSTFLAGS="-C target-feature=-crt-static" cargo build \
         --target aarch64-unknown-linux-musl \
         --profile opt \
-        --path helix-term \
         --locked
+        # --path helix-term \
+
 
     - name: Check
       run: |
