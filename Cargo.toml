@@ -29,6 +29,8 @@ lto = "fat"
 codegen-units = 1
 strip = true
 opt-level = 3
+panic = "abort"
+overflow-checks = false
 
 [profile.integration]
 inherits = "test"
