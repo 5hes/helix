@@ -36,8 +36,8 @@ jobs:
 
         sudo apt-get install -y \
           musl-tools \
-          gcc-aarch64-linux-gnu \
-          g++-aarch64-linux-gnu \
+          gcc-15-aarch64-linux-gnu \
+          g++-15-aarch64-linux-gnu \
           binutils-aarch64-linux-gnu \
           musl-dev
 
@@ -64,8 +64,8 @@ jobs:
         RUSTFLAGS="-C target-feature=-crt-static" cargo build \
         --target aarch64-unknown-linux-musl \
         --profile opt \
-        --locked
-        # --path helix-term \
+        --locked \
+        -p helix-term
 
 
     - name: Check
