@@ -38,13 +38,13 @@ jobs:
         # DANGEROUS apt-cache search gcc
         sudo apt-get install -y \
           musl-tools \
-          musl-dev
-          # gcc-aarch64-linux-gnu \
-          # g++-aarch64-linux-gnu \
-          # binutils-aarch64-linux-gnu \
-        wget "http://musl.cc/aarch64-linux-musl-cross.tgz"
-        tar -xzf aarch64-linux-musl-cross.tgz -C /usr/local
-        export PATH=/usr/local/aarch64-linux-musl-cross/bin:$PATH
+          musl-dev \
+          gcc-aarch64-linux-musl \
+          g++-aarch64-linux-musl \
+          binutils-aarch64-linux-musl
+        # wget "http://musl.cc/aarch64-linux-musl-cross.tgz"
+        # tar -xzf aarch64-linux-musl-cross.tgz -C /usr/local
+        # export PATH=/usr/local/aarch64-linux-musl-cross/bin:$PATH
 
         export CC_aarch64_unknown_linux_musl=aarch64-linux-musl-gcc
         export AR_aarch64_unknown_linux_musl=aarch64-linux-musl-ar
