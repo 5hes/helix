@@ -33,7 +33,7 @@ jobs:
       run: |
         . $HOME/.cargo/env
         rustup target add aarch64-unknown-linux-musl
-        apt-get update && apt-get install musl-tools gcc clang -y
+        sudo apt-get update && sudo apt-get install musl-tools gcc clang -y
         cargo build --help
         printf "/n/n/n/n/n/"
         RUSTFLAGS="-C target-feature=-crt-static" cargo build \
