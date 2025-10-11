@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Push a tag
       run: |
@@ -85,9 +85,9 @@ jobs:
     - name: Create Release
       uses: softprops/action-gh-release@v2
       with:
-      tag_name: "yearly"
-      draft: false
-      files: |
-        target/aarch64-unknown-linux-musl/hx
+        tag_name: "yearly"
+        draft: false
+        files: |
+          target/aarch64-unknown-linux-musl/hx
       env: 
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
