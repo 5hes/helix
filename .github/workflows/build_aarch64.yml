@@ -46,7 +46,21 @@ jobs:
         export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER=aarch64-linux-gnu-gcc
 
         cargo build --help
-        printf "/n/n/n/n/n/"
+        
+        printf "
+
+
+
+
+        "
+        cargo install --help
+        printf "
+
+
+
+
+
+        "
         RUSTFLAGS="-C target-feature=-crt-static" cargo build \
         --target aarch64-unknown-linux-musl \
         --profile opt \
