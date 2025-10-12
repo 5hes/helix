@@ -39,16 +39,17 @@ jobs:
         sudo apt-get install -y \
           musl-tools \
           musl-dev \
-          gcc-aarch64-linux-musl \
-          g++-aarch64-linux-musl \
-          binutils-aarch64-linux-musl
+          binutils-aarch64-linux-gnu
         # wget "http://musl.cc/aarch64-linux-musl-cross.tgz"
         # tar -xzf aarch64-linux-musl-cross.tgz -C /usr/local
         # export PATH=/usr/local/aarch64-linux-musl-cross/bin:$PATH
+        curl -o zig.tar.xz "https://ziglang.org/download/0.15.1/zig-x86_64-linux-0.15.1.tar.xz"
+        tar -xJf zig.tar.xz
+        export PATH=$PWD/zig/bin:$PATH
 
-        export CC_aarch64_unknown_linux_musl=aarch64-linux-musl-gcc
-        export AR_aarch64_unknown_linux_musl=aarch64-linux-musl-ar
-        export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER=aarch64-linux-musl-gcc
+        export CC_aarch64_unknown_linux_musl=zig
+        export AR_aarch64_unknown_linux_musl=zig
+        export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER=zig
 
         cargo build --help
         
