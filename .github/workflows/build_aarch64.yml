@@ -49,9 +49,9 @@ jobs:
         export PATH=$PWD/zig-x86_64-linux-0.15.1:$PATH
         zig version
 
-        export CC_aarch64_unknown_linux_musl="zig cc"
+        export CC_aarch64_unknown_linux_musl="zig cc -target aarch64-linux-musl"
         export AR_aarch64_unknown_linux_musl="zig ar"
-        export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER="zig cc"
+        export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER="zig cc -target aarch64-linux-musl"
 
         cargo build --help
         
