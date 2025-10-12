@@ -38,10 +38,9 @@ jobs:
         sudo apt-get update
         # DANGEROUS apt-cache search gcc
         sudo apt-get install -y \
+          build-essential \
           musl-tools \
           musl-dev \
-          gcc-aarch64-linux-gnu \
-          g++-aarch64-linux-gnu \
           libc-dev-arm64-cross \
           binutils-aarch64-linux-gnu
         wget -q "https://github.com/cross-tools/musl-cross/releases/download/20250929/aarch64-unknown-linux-musl.tar.xz"
@@ -51,6 +50,11 @@ jobs:
         # export PATH=/usr/local/aarch64-linux-musl-cross/bin:$PATH
         # curl -o zig.tar.xz "https://ziglang.org/download/0.15.1/zig-x86_64-linux-0.15.1.tar.xz"
 
+        # 为构建脚本设置主机工具链
+        export CC_x86_64_unknown_linux_gnu="gcc"
+        export AR_x86_64_unknown_linux_gnu="ar"
+
+# 为目标设置交叉编译工具链
         export CC_aarch64_unknown_linux_musl="aarch64-unknown-linux-musl-gcc"
         export AR_aarch64_unknown_linux_musl="aarch64-unknown-linux-musl-ar"
         export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER="aarch64-unknown-linux-musl-gcc"
