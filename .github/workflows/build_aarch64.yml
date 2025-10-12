@@ -43,15 +43,11 @@ jobs:
         # wget "http://musl.cc/aarch64-linux-musl-cross.tgz"
         # tar -xzf aarch64-linux-musl-cross.tgz -C /usr/local
         # export PATH=/usr/local/aarch64-linux-musl-cross/bin:$PATH
-        curl -o zig.tar.xz "https://ziglang.org/download/0.15.1/zig-x86_64-linux-0.15.1.tar.xz"
-        tar -xJf zig.tar.xz
-        ls -lh
-        export PATH=$PWD/zig-x86_64-linux-0.15.1:$PATH
-        zig version
+        # curl -o zig.tar.xz "https://ziglang.org/download/0.15.1/zig-x86_64-linux-0.15.1.tar.xz"
 
-        export CC_aarch64_unknown_linux_musl="zig cc -target aarch64-linux-musl"
-        export AR_aarch64_unknown_linux_musl="zig ar"
-        export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER="zig cc -target aarch64-linux-musl"
+        export CC_aarch64_unknown_linux_musl="aarch64-linux-musl-gcc"
+        export AR_aarch64_unknown_linux_musl="aarch64-linux-musl-ar"
+        export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER="aarch64-linux-musl-ld"
 
         cargo build --help
         
