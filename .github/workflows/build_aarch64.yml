@@ -32,10 +32,7 @@ jobs:
     - name: Build bin
       run: |
         . $HOME/.cargo/env
-        wget "http://musl.cc/aarch64-linux-musl-cross.tgz"
-        tar -xzf aarch64-linux-musl-cross.tgz -C /usr/local
-    
-        export PATH=/usr/local/aarch64-linux-musl-cross/bin:$PATH
+
         rustup target add aarch64-unknown-linux-musl
 
         sudo apt-get update
@@ -43,15 +40,18 @@ jobs:
         sudo apt-get install -y \
           musl-tools \
           musl-dev \
+          gcc-aarch64-linux-gnu \
+          g++-aarch64-linux-gnu \
+          libc-dev-arm64-cross \
           binutils-aarch64-linux-gnu
         # wget "http://musl.cc/aarch64-linux-musl-cross.tgz"
         # tar -xzf aarch64-linux-musl-cross.tgz -C /usr/local
         # export PATH=/usr/local/aarch64-linux-musl-cross/bin:$PATH
         # curl -o zig.tar.xz "https://ziglang.org/download/0.15.1/zig-x86_64-linux-0.15.1.tar.xz"
 
-        export CC_aarch64_unknown_linux_musl="aarch64-linux-musl-gcc"
-        export AR_aarch64_unknown_linux_musl="aarch64-linux-musl-ar"
-        export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER="aarch64-linux-musl-ld"
+        export CC_aarch64_unknown_linux_musl="aarch64-linux-gnu-gcc"
+        export AR_aarch64_unknown_linux_musl="aarch64-linux-gnu-ar"
+        export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER="aarch64-linux-gnu-gcc"
 
         cargo build --help
         
@@ -70,7 +70,7 @@ jobs:
 
         "
         RUSTFLAGS="-C target-feature=-crt-static -C link-arg=-lm" cargo build \
-        --target aarch64-unknown-linux-musl \
+        --target=aarch64-unknown-linux-musl \
         --profile opt \
         --locked \
         -p helix-term
