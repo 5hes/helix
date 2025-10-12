@@ -44,8 +44,10 @@ jobs:
           g++-aarch64-linux-gnu \
           libc-dev-arm64-cross \
           binutils-aarch64-linux-gnu
-        # wget "http://musl.cc/aarch64-linux-musl-cross.tgz"
-        # tar -xzf aarch64-linux-musl-cross.tgz -C /usr/local
+        wget "https://github.com/cross-tools/musl-cross/releases/download/20250929/aarch64-unknown-linux-musl.tar.xz"
+        tar -xJf aarch64-unknown-linux-musl.tar.xz
+        tree aarch64-unknown-linux-musl
+        exit 1
         # export PATH=/usr/local/aarch64-linux-musl-cross/bin:$PATH
         # curl -o zig.tar.xz "https://ziglang.org/download/0.15.1/zig-x86_64-linux-0.15.1.tar.xz"
 
