@@ -32,6 +32,10 @@ jobs:
     - name: Build bin
       run: |
         . $HOME/.cargo/env
+        wget "http://musl.cc/aarch64-linux-musl-cross.tgz"
+        tar -xzf aarch64-linux-musl-cross.tgz -C /usr/local
+    
+        export PATH=/usr/local/aarch64-linux-musl-cross/bin:$PATH
         rustup target add aarch64-unknown-linux-musl
 
         sudo apt-get update
