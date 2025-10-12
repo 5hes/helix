@@ -46,8 +46,7 @@ jobs:
         curl -o zig.tar.xz "https://ziglang.org/download/0.15.1/zig-x86_64-linux-0.15.1.tar.xz"
         tar -xJf zig.tar.xz
         ls -lh
-        export SB=$PWD
-        export PATH=$SB/zig/bin:$PATH
+        export PATH=$PWD/zig-x86_64-linux-0.15.1/bin:$PATH
         zig version
 
         export CC_aarch64_unknown_linux_musl=zig
